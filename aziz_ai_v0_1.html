@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ps" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10233f">
+<title>Aziz AI</title>
+<style>
+:root{--bg:#0b1729;--panel:#132640;--panel2:#1b3556;--text:#f4f7fb;--muted:#a9bad0;--accent:#57c7b5}
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(150deg,#0b1729,#102d48);color:var(--text);min-height:100vh}
+.wrap{max-width:760px;margin:auto;padding:22px 16px 40px}
+header{text-align:center;padding:25px 10px 20px}
+.logo{width:68px;height:68px;border-radius:22px;background:linear-gradient(135deg,#57c7b5,#3687c8);display:grid;place-items:center;margin:0 auto 12px;font-size:30px;font-weight:bold;color:#082239;box-shadow:0 10px 35px #0005}
+h1{margin:0;font-size:30px;letter-spacing:.3px}
+.sub{color:var(--muted);margin:9px 0 0;font-size:14px}
+.notice{background:#18324b;border:1px solid #31516c;border-radius:14px;padding:12px 14px;color:#d7e6f4;font-size:13px;line-height:1.8;margin:14px 0 20px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.tile{border:1px solid #2b4967;background:linear-gradient(145deg,#17304d,#10243b);border-radius:18px;padding:18px 14px;min-height:126px;text-align:right;color:var(--text);cursor:pointer}
+.tile:active{transform:scale(.985)}
+.tile .ico{font-size:27px;display:block;margin-bottom:12px}
+.tile strong{font-size:16px}
+.tile small{display:block;color:var(--muted);margin-top:7px;line-height:1.6}
+.section{margin-top:22px;background:#10243b;border:1px solid #294663;border-radius:18px;padding:16px}
+.section h2{font-size:18px;margin:0 0 12px}
+textarea,input{font:inherit;width:100%;border:1px solid #385875;border-radius:12px;background:#091a2c;color:white;padding:12px;outline:none}
+textarea{min-height:105px;resize:vertical;line-height:1.8}
+button.action{font:inherit;border:0;border-radius:12px;background:var(--accent);color:#082239;padding:12px 18px;font-weight:bold;cursor:pointer;margin-top:10px}
+#reply{white-space:pre-wrap;line-height:1.9;color:#e3edf7;margin-top:14px}
+footer{text-align:center;color:#8fa5bc;font-size:12px;margin-top:24px}
+@media(max-width:420px){.wrap{padding:14px 12px 30px}.tile{min-height:115px;padding:14px 12px}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">A</div>
+  <h1>Aziz AI</h1>
+  <p class="sub">ستاسو پښتو مرستیال — لومړنۍ وړیا نسخه</p>
+</header>
+<div class="notice">دا د اپ لومړنی ازمایښتي جوړښت دی. د انټرنېټ پرته پرانیستل کېږي؛ لاندې مرستیال یوازې د ازموینې ځوابونه ورکوي، لا له اصلي AI سره نه دی نښلول شوی.</div>
+<div class="grid">
+  <button class="tile" onclick="focusChat()"><span class="ico">💬</span><strong>له AI سره خبرې</strong><small>پوښتنه ولیکئ او د نمونې ځواب وګورئ</small></button>
+  <button class="tile" onclick="showInfo('انځور جوړول')"><span class="ico">🎨</span><strong>انځور جوړول</strong><small>د انځور لپاره خپله مفکوره ولیکئ</small></button>
+  <button class="tile" onclick="showInfo('انځور سمول')"><span class="ico">🖼️</span><strong>انځور سمول</strong><small>دا برخه په راتلونکې نسخه کې نښلوو</small></button>
+  <button class="tile" onclick="showInfo('ژباړه')"><span class="ico">🌐</span><strong>ژباړه</strong><small>د ژباړې برخه به وروسته فعاله شي</small></button>
+</div>
+<section class="section" id="chat">
+  <h2>💬 د ازمایښتي خبرو برخه</h2>
+  <textarea id="question" placeholder="خپله پوښتنه دلته ولیکئ..."></textarea>
+  <button class="action" onclick="answer()">ځواب ترلاسه کړه</button>
+  <div id="reply" aria-live="polite"></div>
+</section>
+<footer>Aziz AI · نسخه ۰.۱ · د ازموینې لپاره</footer>
+</div>
+<script>
+function focusChat(){document.getElementById('question').focus();document.getElementById('chat').scrollIntoView({behavior:'smooth'});}
+function showInfo(name){document.getElementById('reply').textContent='د «'+name+'» برخه په دې لومړنۍ نسخه کې لا فعاله نه ده. لومړی بنسټ ازمویو، بیا یې په وړیا او خوندي لاره ورزیاتوو.';document.getElementById('chat').scrollIntoView({behavior:'smooth'});}
+function answer(){
+ const q=document.getElementById('question').value.trim();
+ const out=document.getElementById('reply');
+ if(!q){out.textContent='مهرباني وکړئ لومړی خپله پوښتنه ولیکئ.';return;}
+ out.textContent='ستاسو پوښتنه ثبت شوه: «'+q+'»\n\nدا یوازې د اپ ازمایښتي نسخه ده؛ اصلي هوښیار ځواب ورکوونکی لا نه دی نښلول شوی. د اصلي AI نښلول به د راتلونکي پړاو کار وي او کېدای شي انټرنېټ او لګښت وغواړي.';
+}
+</script>
+</body>
+</html>
